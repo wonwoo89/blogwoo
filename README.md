@@ -1,4 +1,4 @@
-# blogwoo-pwa
+# blogwoo
 
 ## Project setup
 ```

@@ -1,32 +1,61 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
-  </div>
+  <App>
+    <Nav>
+      <NavBack />
+      <Inner>
+        <Title as="h4">Blogwoo.wallet</Title>
+      </Inner>
+    </Nav>
+    <router-view class="router-view" />
+    <Alert />
+  </App>
 </template>
 
+<script>
+import StyledComponent from './styled/app.styled';
+import Alert from './components/common/Alert.vue';
+
+const components = {
+  ...StyledComponent,
+  Alert,
+};
+
+export default {
+  name: 'app',
+  components,
+  data() {
+    return {
+      displayMode: window.localStorage.getItem('displayMode'),
+    };
+  },
+  mounted() {
+    this.changeDisplayMode(this.mode);
+  },
+  watch: {
+    mode(newMode, oldMode) {
+      if (newMode !== oldMode) {
+        this.changeDisplayMode(newMode);
+      }
+    },
+  },
+  methods: {
+    nameCheck(name) {
+      const nameReg = new RegExp(name, 'gi');
+      return nameReg.test(this.$route.name);
+    },
+    changeDisplayMode(mode) {
+      if (!mode) {
+        return;
+      }
+
+      this.displayMode = mode;
+      localStorage.setItem('displayMode', mode);
+      document.body.parentNode.setAttribute('mode', mode);
+    },
+  },
+};
+</script>
+
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic+Coding');
 </style>
