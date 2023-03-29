@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "yarn kill | yarn ssl-proxy | next dev -p 8900",
+    "ssl-proxy": "npx local-ssl-proxy --key certificates/local.blogwoo.com-key.pem --cert certificates/local.blogwoo.com.pem --source 8443 --target 8900",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "kill": "lsof -i :8900 | grep LISTEN | awk '{print $2}' | xargs  kill -9"
   },
   "packageManager": "yarn@3.5.0",
   "dependencies": {
