@@ -46,3 +46,6 @@ next-env.d.ts
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+# tls certificates
+certificates
