@@ -5,8 +5,8 @@
   "repository": "https://github.com/wonwoo89/blogwoo",
   "author": "Isaac Lee",
   "scripts": {
-    "dev": "yarn kill | yarn ssl-proxy | next dev -p 8900",
-    "ssl-proxy": "npx local-ssl-proxy --key certificates/local.blogwoo.com-key.pem --cert certificates/local.blogwoo.com.pem --source 8443 --target 8900",
+    "dev": "yarn kill & yarn ssl-proxy & next dev -p 8900",
+    "ssl-proxy": "npx local-ssl-proxy --key certificates/local.blogwoo.app-key.pem --cert certificates/local.blogwoo.app.pem --source 8443 --target 8900",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
