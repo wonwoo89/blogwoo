@@ -1,4 +1,11 @@
 import './globals.css'
+import type {ReactNode} from "react";
+import { Noto_Sans_KR } from "next/font/google";
+
+const font = Noto_Sans_KR({
+  weight: ['400', '500', '700'],
+  subsets: ['latin'],
+});
 
 export const metadata = {
   title: 'Blogwoo',
@@ -8,11 +15,15 @@ export const metadata = {
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: ReactNode
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+      <main className={font.className}>
+        {children}
+      </main>
+      </body>
     </html>
   )
 }
