@@ -15,6 +15,7 @@
     "jsx": "preserve",
     "incremental": true,
     "importsNotUsedAsValues": "error",
+    "ignoreDeprecations": true,
     "plugins": [
       {
         "name": "next"
