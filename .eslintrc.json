@@ -1,3 +1,100 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "next",
+    "prettier",
+    "eslint:recommended",
+    "plugin:@next/next/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": [
+    "@typescript-eslint",
+    "import",
+    "no-relative-import-paths"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "rules": {
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-explicit-any": "error",
+    "no-console": "error",
+    "react/boolean-prop-naming": [
+      "error",
+      {
+        "propTypeNames": ["bool", "mutuallyExclusiveTrueProps"],
+        "rule": "^[$]?(is|has|show)[A-Z]([A-Za-z0-9]?)+"
+      }
+    ],
+    "react/forbid-component-props": ["error", { "forbid": ["style"] }],
+    "react/hook-use-state": "error",
+    "react/jsx-handler-names": ["error",{
+      "eventHandlerPrefix": "handle|on",
+      "eventHandlerPropPrefix": "on",
+      "checkLocalVariables": true
+    }],
+    "react/sort-prop-types": [
+      "error",
+      {
+        "ignoreCase": true,
+        "callbacksLast": true,
+        "sortShapeProp": true
+      }
+    ],
+    "react/jsx-sort-props": [
+      "error",
+      {
+        "ignoreCase": true,
+        "callbacksLast": true,
+        "shorthandFirst": true,
+        "multiline": "last",
+        "reservedFirst": true,
+        "noSortAlphabetically":true
+      }
+    ],
+    "react/jsx-tag-spacing": ["error", { "beforeSelfClosing": "always" }],
+    "react/react-in-jsx-scope": "off",
+    "react/function-component-definition": [
+      "error",
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
+    ],
+    "react-hooks/exhaustive-deps": "error",
+    "react/destructuring-assignment": ["error", "always", { "ignoreClassFields": true, "destructureInSignature": "always" }],
+    "import/default": "error",
+    "import/namespace": "error",
+    "import/no-unused-modules": ["off", { "unusedExports": true, "ignoreExports": ["./pages/**/*.tsx", "./hooks/query/*.ts"] }],
+    "import/no-commonjs": "error",
+    "import/no-nodejs-modules": "error",
+    "import/order": [
+      "error",
+      {
+        "groups": ["builtin", "external", "internal", "sibling"],
+        "pathGroups": [
+          {
+            "pattern": "react",
+            "group": "external",
+            "position": "before"
+          },
+          {
+            "pattern": "**/*.@(svg|jpg|jpeg|png|gif|css|scss)",
+            "group":"internal",
+            "position": "after"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": ["react"],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ],
+    "no-relative-import-paths/no-relative-import-paths": "error"
+  }
 }
